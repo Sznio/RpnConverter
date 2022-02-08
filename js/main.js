@@ -28,6 +28,25 @@ const generate = () => {
       output.appendChild(outputElem);
 };
 
+const toggleMenuVisibility = () => {
+      const isHidden = slideIn.classList.contains("slide_in_menu--hidden");
+      if (isHidden) {
+            // We need to show it now.
+            slideIn.classList.remove("slide_in_menu--hidden");
+            slideInIcon.classList.remove("slide_in_menu__icon-menu--hidden");
+
+            slideIn.classList.add("slide_in_menu--active");
+            slideInIcon.classList.add("slide_in_menu__icon-menu--active");
+      } else {
+            // We need to hide it now.
+            slideIn.classList.add("slide_in_menu--hidden");
+            slideInIcon.classList.add("slide_in_menu__icon-menu--hidden");
+
+            slideIn.classList.remove("slide_in_menu--active");
+            slideInIcon.classList.remove("slide_in_menu__icon-menu--active");
+      }
+};
+
 const focusInput = () => {
       input.focus();
 };
@@ -131,24 +150,7 @@ const postfixToInfix = (RPN) => {
 
 btn.addEventListener("click", generate);
 
-slideInIcon.addEventListener("click", () => {
-      const isHidden = slideIn.classList.contains("slide_in_menu--hidden");
-      if (isHidden) {
-            // We need to show it now.
-            slideIn.classList.remove("slide_in_menu--hidden");
-            slideInIcon.classList.remove("slide_in_menu__icon-menu--hidden");
-
-            slideIn.classList.add("slide_in_menu--active");
-            slideInIcon.classList.add("slide_in_menu__icon-menu--active");
-      } else {
-            // We need to hide it now.
-            slideIn.classList.add("slide_in_menu--hidden");
-            slideInIcon.classList.add("slide_in_menu__icon-menu--hidden");
-
-            slideIn.classList.remove("slide_in_menu--active");
-            slideInIcon.classList.remove("slide_in_menu__icon-menu--active");
-      }
-});
+slideInIcon.addEventListener("click", toggleMenuVisibility);
 
 checkBoxes.forEach((checkbox) => {
       checkbox.addEventListener("click", (e) => {
@@ -167,3 +169,6 @@ checkBoxes.forEach((checkbox) => {
             }
       });
 });
+
+// Make the menu appear as the page loads, with slight delay:
+setTimeout(toggleMenuVisibility, 350);
