@@ -2,6 +2,53 @@ const btn = document.querySelector(".rpn-submit");
 const input = document.querySelector("#rpn-data");
 const output = document.querySelector(".output");
 
+// own functions
+const generate = () => {
+      const rpnString = input.value;
+      let convString = postfixToInfix(rpnString);
+      if (!rpnString || !convString) {
+            return;
+      }
+      convString = convString.split("+").join(" + ");
+      convString = convString.split("-").join(" - ");
+      convString = convString.split("*").join(" * ");
+      convString = convString.split("/").join(" / ");
+      const outputElem = document.createElement("div");
+      outputElem.textContent = `${convString} = ${eval(convString)}`;
+      output.innerHTML = "";
+      output.appendChild(outputElem);
+};
+
+const focusInput = () => {
+      input.focus();
+};
+
+const clearInput = () => {
+      console.log("ASDSADSAD");
+      input.value = "";
+};
+
+// keymag
+import { KeyMgr, KeyCombo, KeyHelper } from "./KeyMgr/KeyMgr.js";
+
+const genCombo = new KeyCombo(["Tab"], generate);
+
+const clearInputCombo = new KeyCombo(
+      [
+            KeyHelper.convertKeyCodeToKey("CtrlLeft"),
+            KeyHelper.convertKeyCodeToKey("AltLeft"),
+      ],
+      clearInput
+);
+
+const keyMgr = new KeyMgr(document.body, true);
+
+keyMgr.addKeyCombo(genCombo);
+
+keyMgr.addKeyCombo(clearInputCombo);
+
+keyMgr.addOnKeyReleaseEvent("Shift", focusInput);
+
 const postfixToInfix = (RPN) => {
       let convert = RPN.replace(/\^/g, "**")
             .split(/\s+/g)
@@ -50,18 +97,4 @@ const postfixToInfix = (RPN) => {
       else throw `${RPN} is not a correct RPN`;
 };
 
-btn.addEventListener("click", () => {
-      const rpnString = input.value;
-      let convString = postfixToInfix(rpnString);
-      if (!rpnString || !convString) {
-            return;
-      }
-      convString = convString.split("+").join(" + ");
-      convString = convString.split("-").join(" - ");
-      convString = convString.split("*").join(" * ");
-      convString = convString.split("/").join(" / ");
-      const outputElem = document.createElement("div");
-      outputElem.textContent = `${convString} = ${eval(convString)}`;
-      output.innerHTML = "";
-      output.appendChild(outputElem);
-});
+btn.addEventListener("click", generate);
