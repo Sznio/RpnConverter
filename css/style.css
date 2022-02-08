@@ -1,0 +1,143 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   background-color: #121212;
+   color: #ddd;
+   font-family: arial;
+}
+.input-wrap {
+   width: 100%;
+   text-align: center;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content:center;
+}
+#rpn-data-label {
+   font-size: 2rem;
+   flex-basis:100%;
+   margin-bottom: 1rem;
+}
+
+#rpn-data {
+   transition: 0.2s;
+   padding: 0.25rem 1rem;
+   font-size: 2rem;
+   background-color: transparent;
+   color: #ddd;
+   border: 2px solid #2fc;
+   border-radius: 5px;
+   width: 90%;
+   max-width: 800px;
+
+   height:calc(2rem + 24px);
+   max-height:48px;
+}
+
+
+#rpn-data:focus {
+   outline:none;
+   border-color:  rgb(95, 106, 255);
+   color: #fff;
+}
+
+
+
+.wrap {
+   height: 100vh;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+}
+
+.output-wrap {
+   flex-grow: 1;
+}
+
+.output {
+   text-align: center;
+   font-size: 2rem;
+   width: 90%;
+   max-width: 800px;
+   margin-left: auto;
+   margin-right: auto;
+   min-height: 60px;
+   margin-top: 20px;
+   background-color: rgba(255, 255, 255, 0.1);
+   border-radius: 6px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+
+}
+
+.rpn-submit {
+   transition: 0.2s;
+   display: block;
+   font-size: 2rem;
+   border: 3px solid #2fc;
+   padding: 10px 20px;
+   background-color: transparent;
+   color: #ddd;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.rpn-submit:hover {
+   border: 3px solid rgb(95, 106, 255);
+   color: #fff;
+}
+
+.rpn-submit:active {
+   border: 3px solid rgb(255, 95, 202);
+   color: #fff;
+}
+
+@media(max-width:901px){
+   /* from 0 to 900 */
+   html{
+      font-size: 14px;
+   }
+}
+
+@media(max-width:801px){
+   /* from 0 to 800 */
+   html{
+      font-size: 12px;
+   }
+   #rpn-data-label {
+      font-size: 28px;
+   }
+   
+}
+@media(max-width:601px){
+   /* from 0 to 600 */
+   html{
+      font-size: 10px;
+   }
+
+   
+}
+
+
+@media(max-width:381px){
+   /* from 0 to 800 */
+  
+   .output {
+      font-size: 1.8rem;
+   }
+   
+}
+
+@media(max-width:351px){
+   /* from 0 to 350 */
+  
+   .output {
+      font-size: 1.4rem;
+   }
+   
+}
