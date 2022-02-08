@@ -41,7 +41,7 @@ const clearInputCombo = new KeyCombo(
       clearInput
 );
 
-const keyMgr = new KeyMgr(document.body, true);
+const keyMgr = new KeyMgr(document.body, false);
 
 keyMgr.addKeyCombo(genCombo);
 
