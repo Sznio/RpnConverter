@@ -39,7 +39,9 @@ const clearInput = () => {
 
 const playTypingSound = () => {
       if (sound_on_typing) {
-            const audio = new Audio("../audio/click.mp3");
+            const audio = new Audio(
+                  "https://github.com/Sznio/RpnConverter/blob/main/audio/click.mp3?raw=true"
+            );
             audio.volume = 0.5;
             audio.play();
       }
@@ -47,7 +49,10 @@ const playTypingSound = () => {
 
 const playFunnySound = () => {
       if (funny_mode) {
-            const audio = new Audio("../audio/vine-boom.mp3");
+            const audio = new Audio(
+                  "https://github.com/Sznio/RpnConverter/blob/main/audio/vine-boom.mp3?raw=true"
+            );
+
             audio.volume = 0.5;
             audio.play();
       }
