@@ -52,7 +52,6 @@ const focusInput = () => {
 };
 
 const clearInput = () => {
-      console.log("ASDSADSAD");
       input.value = "";
 };
 
